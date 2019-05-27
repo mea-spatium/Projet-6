@@ -1,0 +1,157 @@
+<html>
+<head>
+<script type = "text/javascript" src = "http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<style>
+body {
+    background-color: grey;
+}
+.page {
+    width: 595px;
+    height : 842px;
+    background-color: rgb(34, 34, 34);
+    float: right;
+    position: fixed;
+    right: 5;
+    top: 20;
+}
+#bas {
+    width: 100%;
+    height: 70%;
+    background-color: #ff8e09;
+}
+.name {
+    font-size: larger;
+    font-weight: bold;
+    line-height: 2px;
+    font-family: 'Comic Sans MS', cursive;
+}
+#tete {
+    font-family: 'Comic Sans MS', cursive;
+    line-height: 2px;
+}
+.screen {
+    right: 5;
+    float: right;
+    position: fixed;
+    top: 0;
+}
+.infos {
+    font-family: 'Comic Sans MS', cursive;
+    line-height: 2px;
+}
+.pp {
+    font-family: 'Comic Sans MS', cursive;
+    float: left;
+    width: 100%;
+}
+#p8 {
+    width: 100%;
+    line-height: 25px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    float: left;
+}
+input {
+    margin-left: auto;
+}
+</style>
+</head>
+<body>
+<div id="autour">
+Nom :<br><input type="text" id="textField0" onkeyup="javascript:Nom(this.value);"><br>
+Prénom :<br><input type="text" id="textField0" onkeyup="javascript:Prenom(this.value);"><br>
+Age :<br><input type="text" id="textField0" onkeyup="javascript:Age(this.value);"><br>
+Adresse :<br><input type="text" id="textField0" onkeyup="javascript:Adresse(this.value);"><br>
+Code Postal :<br><input type="text" id="textField0" onkeyup="javascript:CP(this.value);"><br>
+Adresse mail:<br><input type="text" id="textField0" onkeyup="javascript:Mail(this.value);"><br>
+Numéro de téléphone :<br><input type="text" id="textField0" onkeyup="javascript:Tel(this.value);"><br>
+Expérience :<br><input type="text" id="textField0" onkeyup="javascript:Metier(this.value);"><br>
+<textarea onkeyup="javascript:Exp1(this.value);" rows="3"></textarea><button onclick="Plus()">+</button><br>
+</div>
+<div class="page">
+    
+    <div id="bas">
+        <span id="tete" style="float: left;">
+        <p id="p1" class="name"></p>
+        <p id="p2" class="name"></p>
+        <p id="p3" class="infos"></p>
+        <p id="p4" class="infos"></p>
+        <p id="p5" class="infos"></p><hr align="left" width="292px" color="rgb(34, 34, 34)">   
+        </span>
+        <span style="float:right; text-align:right">
+        <p class="name" style="color: transparent;"> gg</p>
+        <p class="name" style="color: transparent;"> gg</p>
+        <p id="p6" class="infos"></p>
+        <p id="p7" class="infos"></p>
+        </span>
+        <p id="p8" class="name"></p><br>
+        <p id="p9" class="pp"></p>
+        <p id="p10" class="pp"></p>
+        <p id="p11" class="pp"></p>
+    </div>
+</div>
+<button onclick="Screen()" class="screen">Screen</button>
+<script>
+var exp = 2;
+function Screen() {
+  html2canvas(document.querySelector(".page")).then(canvas => {
+    document.body.appendChild(canvas)
+});
+  }
+function Nom(text) {
+    document.getElementById("p1").innerHTML = text;
+}
+function Prenom(text) {
+    document.getElementById("p2").innerHTML = text;
+}
+function Age(text) {
+    document.getElementById("p3").innerHTML = text;
+}
+function Adresse(text) {
+    document.getElementById("p4").innerHTML = text;
+}
+function CP(text) {
+    document.getElementById("p5").innerHTML = text;
+}
+function Mail(text) {
+    document.getElementById("p6").innerHTML = text;
+}
+function Tel(text) {
+    document.getElementById("p7").innerHTML = text;
+}
+function Metier(text) {
+    document.getElementById("p8").innerHTML = text;
+}
+function Exp1(text) {
+    document.getElementById("p9").innerHTML = text;
+}
+function Exp2(text) {
+    document.getElementById("p10").innerHTML = text;
+}
+function Exp3(text) {
+    document.getElementById("p11").innerHTML = text;
+}
+function Plus() {
+    var div = document.getElementById("autour");
+    var br = document.createElement("br");
+    var br2 = document.createElement("br");
+    var btn = document.createElement("button");
+    var metier = document.createElement("input");
+    metier.setAttribute("type", "text");
+    metier.setAttribute("style", "float:none");
+    div.appendChild(metier);
+    div.appendChild(br);
+    var ta = document.createElement('textarea');
+    ta.setAttribute("rows", "3");
+    ta.setAttribute("style", "float:none");
+    ta.setAttribute("onkeyup", "javascript:Exp"+exp++ +"(this.value);");
+    div.appendChild(ta);
+    btn.setAttribute("onclick", "Plus()");
+    btn.innerHTML = "+";
+    div.appendChild(btn);
+    div.appendChild(br2);
+} 
+</script>
+</body>
+</html>
